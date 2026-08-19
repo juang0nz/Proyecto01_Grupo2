@@ -117,7 +117,7 @@ public interface TDALista<T> {
      *
      * @return la cantidad de elementos de la lista
      */
-    int tamaño();
+    int tamanio();
 
     /**
      * Determina si la lista no contiene elementos.
