@@ -42,7 +42,7 @@ public class TDAPilaPrioridadConArregloImpl<T> extends TDAListaConArregloImpl<T>
         while (posicion < tamanio() && comparador.compare(obtener(posicion), dato) <= 0) {
             posicion++;
         }
-        agregar(posicion, dato);
+        super.agregar(posicion, dato);
     }
 
     @Override
