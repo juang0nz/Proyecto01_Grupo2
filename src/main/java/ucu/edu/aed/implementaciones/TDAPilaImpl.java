@@ -6,33 +6,29 @@ import ucu.edu.aed.tda.TDAPila;
 
 public class TDAPilaImpl<T> extends TDAListaEnlazadaImpl<T> implements TDAPila<T> {
 
-    // Obtener el tope de la pila: con la implementación actual de la lista
-    // el tope está en la cabeza (primer elemento), por lo que tope() es obtener(0).
+    // opbtener el tope de la pila con este metodo
     @Override
     public T tope() {
         if (esVacio()) {
             throw new NoSuchElementException();
         }
-        // el primero (head) representa el tope de la pila
-        return obtener(0);
+        return obtener(tamanio() - 1);
 
     }
 
-    // Saca el elemento del tope (head) y lo devuelve
+    // este saca el ultimo el elemento de la Pila y lo devuelve
     @Override
     public T saca() {
         if (esVacio()) {
             throw new NoSuchElementException();
         }
-        // remover(0) es O(1) con nuestra implementación actual de lista (inserción en head)
-        return remover(0);
+        return remover(tamanio() - 1);
     }
 
-    // Mete el elemento en el tope de la pila: insertar en la cabeza (índice 0)
+    // mete el elemento en el tope de la pila
     @Override
     public void mete(T dato) {
-        // insertamos en la posición 0 para que el head represente el tope
-        agregar(0, dato);
+        agregar(dato);
     }
 
 }

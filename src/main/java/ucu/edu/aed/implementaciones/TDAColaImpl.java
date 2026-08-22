@@ -19,7 +19,6 @@ public T frente(){
 // agrega al final de la lista
 @Override
 public boolean  poneEnCola(T dato){
-    // agregar(dato) añade al final (append) en TDAListaEnlazadaImpl
     agregar(dato);
     return true;
 }
