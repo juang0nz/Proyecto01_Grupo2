@@ -48,5 +48,20 @@ public class ProductoBancario {
         this.estado = estado;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof ProductoBancario)) {
+            return false;
+        }
+        return this.id == ((ProductoBancario) obj).id;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductoBancario{id=" + id + ", tipo='" + tipo + "', estado='" + estado + "'}";
+    }
 
 }

@@ -4,6 +4,23 @@ import ucu.edu.aed.tda.TDAConjunto;
 
 public class TDAConjuntoImpl<T> extends TDAListaEnlazadaImpl<T>implements TDAConjunto<T> {
 
+    // En un conjunto no se permiten duplicados. Sobrescribimos los métodos de
+    // agregación para garantizar que un elemento solo se inserte si no existe
+    // previamente (según equals()).
+    @Override
+    public void agregar(T elem) {
+        if (!this.contiene(elem)) {
+            super.agregar(elem);
+        }
+    }
+
+    @Override
+    public void agregar(int index, T elem) {
+        if (!this.contiene(elem)) {
+            super.agregar(index, elem);
+        }
+    }
+
 
     /*
      * Lenguaje natural

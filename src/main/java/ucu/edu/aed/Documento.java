@@ -46,4 +46,26 @@ public class Documento {
     public void setFechaVencimiento(Date fechaVencimiento) {
         this.fechaVencimiento = fechaVencimiento;
     }
+
+    // vencido si la fecha de vencimiento ya pasó respecto a la fecha dada
+    public boolean estaVencido(Date fechaReferencia) {
+        return fechaVencimiento != null && fechaVencimiento.before(fechaReferencia);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Documento)) {
+            return false;
+        }
+        return this.id == ((Documento) obj).id;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Documento{id=" + id + ", tipo='" + tipo + "'}";
+    }
 }
