@@ -30,12 +30,35 @@ public class TDAColaPrioridadEnlazadaImpl<T> extends TDAListaEnlazadaImpl<T> imp
             return false;
         }
 
-        int posicion = 0;
-        while (posicion < tamanio && comparador.compare(obtener(posicion), dato) <= 0) {
-            posicion++;
+        /*
+         * Implementación anterior (O(n²) en lista enlazada):
+         *
+         * int posicion = 0;
+         * while (posicion < tamanio && comparador.compare(obtener(posicion), dato) <= 0) {
+         *     posicion++;
+         * }
+         * super.agregar(posicion, dato);
+         */
+
+        Nodo<T> nuevoNodo = new Nodo<>(dato);
+        Nodo<T> anterior = null;
+        Nodo<T> actual = primero;
+
+        // Recorre una sola vez la lista para hallar el punto de inserción (O(n)).
+        while (actual != null && comparador.compare(actual.getDato(), dato) <= 0) {
+            anterior = actual;
+            actual = actual.getSiguiente();
         }
 
-        super.agregar(posicion, dato);
+        if (anterior == null) {
+            nuevoNodo.setSiguiente(primero);
+            primero = nuevoNodo;
+        } else {
+            nuevoNodo.setSiguiente(actual);
+            anterior.setSiguiente(nuevoNodo);
+        }
+
+        tamanio++;
         return true;
     }
 
