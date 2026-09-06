@@ -93,7 +93,7 @@ public class Sucursal {
 
     
     // Atención en mostrador (cola con prioridad)
-    
+
 
     public void solicitarAtencion(Cliente cliente) {
         mostrador.poneEnCola(cliente);
