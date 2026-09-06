@@ -1,7 +1,6 @@
 package ucu.edu.aed.implementaciones;
 
 
-import ucu.edu.aed.tda.TDAElemento;
 
 public class AVL<T> extends ABB<T> {
 
