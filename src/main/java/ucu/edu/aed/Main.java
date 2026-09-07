@@ -1,10 +1,11 @@
 package ucu.edu.aed;
 
 import java.util.Date;
+import ucu.edu.aed.Paquete;
 
 public class Main {
     public static void main(String[] args) {
-        Sucursal suc = new Sucursal("Sucursal Central");
+       /*  Sucursal suc = new Sucursal("Sucursal Central");
 
         // Registrar clientes
         Cliente c1 = new Cliente("Ana", 1, Prioridad.NORMAL);
@@ -109,5 +110,62 @@ public class Main {
         }
 
         System.out.println("\nDemo finalizada.");
+
+        /*-----------------------------------------------------SEGUNDO HITO -----------------------------------------------------*/
+      /*   FabricaPaquetes fabrica = new FabricaPaquetes();
+        Paquete paqueteOro = fabrica.crearPaqueteOro();
+
+        System.out.println("\nEstructura del paquete Oro:");
+        paqueteOro.mostrarEstructura(paqueteOro.getComponentes().obtenerRaiz(), 0);
+        Paquete paquetePremium = fabrica.crearPaquetePremium();
+        System.out.println("\nEstructura del paquete Premium:");
+        paquetePremium.mostrarEstructura(paquetePremium.getComponentes().obtenerRaiz(), 0);
+
+        Paquete paqueteBasico = fabrica.crearPaqueteBasico();
+        System.out.println("\nEstructura del paquete Básico:");
+        paqueteBasico.mostrarEstructura(paqueteBasico.getComponentes().obtenerRaiz(), 0);
+*/
+
+ // 1. Creo un cliente
+    Cliente cliente = new Cliente("Juan",1,Prioridad.NORMAL);
+
+    // 2. Creo la fábrica
+    FabricaPaquetes fabrica = new FabricaPaquetes();
+
+    // 3. Creo el paquete Oro
+    Paquete paqueteOro = fabrica.crearPaqueteOro();
+
+    // 4. Muestro la estructura antes de contratar
+    System.out.println("Estructura del paquete Oro:");
+    paqueteOro.mostrarEstructura(paqueteOro.getComponentes().obtenerRaiz(), 0);
+
+    // 5. El cliente contrata el paquete
+    paqueteOro.contratar(cliente);
+
+    // 6. Muestro los productos que ahora tiene el cliente
+    System.out.println("\nProductos asociados al cliente:");
+
+    for (int i = 0; i < cliente.getProductos().tamanio(); i++) {
+        System.out.println("- " + cliente.getProductos().obtener(i));
     }
+
+    // ==========================
+    // DOY DE BAJA TARJETA
+    // ==========================
+
+    System.out.println("\nDando de baja Tarjeta de Crédito...");
+
+    paqueteOro.darBajaProducto(3);
+
+
+    // ==========================
+    // MUESTRO EL PAQUETE NUEVAMENTE
+    // ==========================
+
+    System.out.println("\nEstructura después de la baja:");
+
+    paqueteOro.getComponentes().mostrarEstructura();
+
+    }
+
 }

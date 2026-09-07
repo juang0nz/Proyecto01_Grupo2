@@ -1,13 +1,14 @@
 package ucu.edu.aed;
+
 import java.util.Date;
 
 public class ProductoBancario {
-    int id;
-    String tipo;
-    Date fechaAlta;
-    String estado;
+    private int id;
+    public String tipo;
+    private Date fechaAlta;
+    private String estado;
 
-    //constructor
+    // constructor
     public ProductoBancario(int id, String tipo, Date fechaAlta, String estado) {
         this.id = id;
         this.tipo = tipo;
@@ -15,7 +16,8 @@ public class ProductoBancario {
         this.estado = estado;
 
     }
-    //getters y setters
+
+    // getters y setters
     public int getId() {
         return id;
     }
@@ -61,7 +63,7 @@ public class ProductoBancario {
 
     @Override
     public String toString() {
-        return "ProductoBancario{id=" + id + ", tipo='" + tipo + "', estado='" + estado + "'}";
+        return tipo;
     }
 
 }

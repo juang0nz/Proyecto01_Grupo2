@@ -85,4 +85,8 @@ public class Cliente {
     public String toString() {
         return "Cliente{id=" + id + ", nombre='" + nombre + "', prioridad=" + prioridad + "}";
     }
+    // agrega un producto bancario al conjunto de productos del cliente
+    public void agregarProducto(ProductoBancario producto) {
+    productos.agregar(producto);
+}
 }

@@ -75,4 +75,6 @@ public class ElementoNario<T> implements TDAElementoNario<T> {
         }
         accion.accept(dato);
     }
+
+
 }
