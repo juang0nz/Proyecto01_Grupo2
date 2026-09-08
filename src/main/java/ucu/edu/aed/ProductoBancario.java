@@ -2,7 +2,7 @@ package ucu.edu.aed;
 
 import java.util.Date;
 
-public class ProductoBancario {
+public class ProductoBancario implements Comparable<ProductoBancario> {
     private int id;
     public String tipo;
     private Date fechaAlta;
@@ -50,6 +50,10 @@ public class ProductoBancario {
         this.estado = estado;
     }
 
+    @Override
+    public int compareTo(ProductoBancario otro) {
+        return Integer.compare(this.id, otro.id);
+    }
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

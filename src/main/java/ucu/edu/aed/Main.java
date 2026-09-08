@@ -167,20 +167,34 @@ public class Main {
 
     paqueteOro.getComponentes().mostrarEstructura();
      // ==========================
-// PROBANDO BÚSQUEDA POR AVL
+    // PROBANDO BÚSQUEDA POR AVL
+    // ==========================
+
+    Sucursal sucursalTest = new Sucursal("Sucursal Test");
+    sucursalTest.registrarCliente(cliente);
+
+    System.out.println("\nBuscando cliente con documento 1...");
+    Cliente encontrado = sucursalTest.buscarClientePorDocumento(1);
+    System.out.println("Encontrado: " + encontrado);
+
+    System.out.println("Buscando cliente con documento 999 (no existe)...");
+    Cliente noExiste = sucursalTest.buscarClientePorDocumento(999);
+    System.out.println("Encontrado: " + noExiste);
+
+    // ==========================
+// PROBANDO BÚSQUEDA DE PRODUCTO POR CUENTA
 // ==========================
 
-Sucursal sucursalTest = new Sucursal("Sucursal Test");
-sucursalTest.registrarCliente(cliente);
+    ProductoBancario productoTest = new ProductoBancario(500, "Caja de Ahorros", new Date(), "ACTIVO");
+    sucursalTest.darAltaProducto(cliente, productoTest);
 
-System.out.println("\nBuscando cliente con documento 1...");
-Cliente encontrado = sucursalTest.buscarClientePorDocumento(1);
-System.out.println("Encontrado: " + encontrado);
+    System.out.println("\nBuscando producto con cuenta 500...");
+    ProductoBancario encontradoProducto = sucursalTest.buscarProductoPorCuenta(500);
+    System.out.println("Encontrado: " + encontradoProducto);
 
-System.out.println("Buscando cliente con documento 999 (no existe)...");
-Cliente noExiste = sucursalTest.buscarClientePorDocumento(999);
-System.out.println("Encontrado: " + noExiste);
-
+    System.out.println("Buscando producto con cuenta 9999 (no existe)...");
+    ProductoBancario noExisteProducto = sucursalTest.buscarProductoPorCuenta(9999);
+    System.out.println("Encontrado: " + noExisteProducto);
     }
 
 }

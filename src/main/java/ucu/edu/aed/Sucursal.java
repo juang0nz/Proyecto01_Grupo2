@@ -21,6 +21,7 @@ public class Sucursal {
     private final TDAConjunto<Empleado> empleados = new TDAConjuntoImpl<>();
     private final TDAConjunto<Sector> sectores = new TDAConjuntoImpl<>();
     private final AVL<Cliente> clientesPorDocumento = new AVL<>();
+    private final AVL<ProductoBancario> productosPorCuenta = new AVL<>();
 
     // mostrador de atención: cola con prioridad (PRIORITARIA antes que NORMAL)
     // la prioridad se define en el enum Prioridad, y se compara con un comparador
@@ -33,6 +34,7 @@ public class Sucursal {
     public Sucursal(String nombre) {
         this.nombre = nombre;
     }
+    
 
     private static int comparaPrioridad(Prioridad prioridad) {
         // menor valor = más prioridad en la cola
@@ -69,14 +71,20 @@ public class Sucursal {
         return clientesPorDocumento.buscar(criterio);
     }
 
+    public ProductoBancario buscarProductoPorCuenta(int idCuenta) {
+    Comparable<ProductoBancario> criterio = p -> Integer.compare(idCuenta, p.getId());
+    return productosPorCuenta.buscar(criterio);
+    }
+
     
     // Productos bancarios
     
 
     public void darAltaProducto(Cliente cliente, ProductoBancario producto) {
         cliente.getProductos().agregar(producto);
+        productosPorCuenta.insertar(producto);   // ← nueva
         registrar(cliente, TipoInteraccion.ALTA_PRODUCTO,
-                "Alta de producto " + producto.getTipo() + " (id=" + producto.getId() + ")");
+        "Alta de producto " + producto.getTipo() + " (id=" + producto.getId() + ")");
     }
 
     public boolean darBajaProducto(Cliente cliente, ProductoBancario producto) {
