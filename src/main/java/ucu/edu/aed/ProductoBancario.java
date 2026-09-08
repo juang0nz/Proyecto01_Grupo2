@@ -7,14 +7,22 @@ public class ProductoBancario implements Comparable<ProductoBancario> {
     public String tipo;
     private Date fechaAlta;
     private String estado;
+    public double saldo;
+    public String moneda;
 
-    // constructor
+    // constructor viejo: se mantiene por compatibilidad, saldo y moneda quedan en 0/UYU por defecto
     public ProductoBancario(int id, String tipo, Date fechaAlta, String estado) {
+        this(id, tipo, fechaAlta, estado, 0.0, "UYU");
+    }
+
+    // constructor nuevo: permite indicar saldo y moneda
+    public ProductoBancario(int id, String tipo, Date fechaAlta, String estado, double saldo, String moneda) {
         this.id = id;
         this.tipo = tipo;
         this.fechaAlta = fechaAlta;
         this.estado = estado;
-
+        this.saldo = saldo;
+        this.moneda = moneda;
     }
 
     // getters y setters
@@ -50,10 +58,27 @@ public class ProductoBancario implements Comparable<ProductoBancario> {
         this.estado = estado;
     }
 
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public String getMoneda() {
+        return moneda;
+    }
+
+    public void setMoneda(String moneda) {
+        this.moneda = moneda;
+    }
+
     @Override
     public int compareTo(ProductoBancario otro) {
         return Integer.compare(this.id, otro.id);
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

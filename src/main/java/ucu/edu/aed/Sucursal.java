@@ -2,7 +2,7 @@ package ucu.edu.aed;
 
 import java.util.Date;
 import java.util.NoSuchElementException;
-
+import ucu.edu.aed.tda.TDAElemento;
 import ucu.edu.aed.implementaciones.AVL;
 import ucu.edu.aed.implementaciones.TDAColaPrioridadEnlazadaImpl;
 import ucu.edu.aed.implementaciones.TDAConjuntoImpl;
@@ -227,6 +227,27 @@ public class Sucursal {
             Empleado empleado = empleados.obtener(i);
             if (empleado.getSector().equals(sector)) {
                 resultado.agregar(empleado);
+            }
+        }
+        return resultado;
+    }
+    public Cliente clienteConDocumentoMasAlto() {
+        if (clientesPorDocumento.esVacio()) {
+            return null;
+        }
+        TDAElemento<Cliente> actual = clientesPorDocumento.obtenerRaiz();
+        while (actual.getHijoDerecho() != null) {
+            actual = actual.getHijoDerecho();
+        }
+        return actual.getDato();
+    }
+
+    public TDALista<Cliente> clientesSinProductos() {
+        TDALista<Cliente> resultado = new TDAListaEnlazadaImpl<>();
+        for (int i = 0; i < clientes.tamanio(); i++) {
+            Cliente c = clientes.obtener(i);
+            if (c.getProductos().tamanio() == 0) {
+                resultado.agregar(c);
             }
         }
         return resultado;

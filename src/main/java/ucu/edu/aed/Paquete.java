@@ -91,4 +91,39 @@ public boolean darBajaProducto(int idProducto) {
     componentes.eliminar(criterio);
     return true;
 }
+public TDALista<SaldoPorMoneda> posicionConsolidada() {
+    TDALista<SaldoPorMoneda> resultado = new ucu.edu.aed.implementaciones.TDAListaEnlazadaImpl<>();
+
+    TDAElementoNario<ProductoBancario> raiz = componentes.obtenerRaiz();
+    if (raiz == null) {
+        return resultado;
+    }
+
+    consolidarSubarbol(raiz, resultado);
+    return resultado;
+}
+
+private void consolidarSubarbol(
+        TDAElementoNario<ProductoBancario> nodo,
+        TDALista<SaldoPorMoneda> resultado) {
+
+    ProductoBancario producto = nodo.getDato();
+    acumular(resultado, producto.getMoneda(), producto.getSaldo());
+
+    TDALista<TDAElementoNario<ProductoBancario>> hijos = nodo.getHijos();
+    for (int i = 0; i < hijos.tamanio(); i++) {
+        consolidarSubarbol(hijos.obtener(i), resultado);
+    }
+}
+
+private void acumular(TDALista<SaldoPorMoneda> resultado, String moneda, double monto) {
+    for (int i = 0; i < resultado.tamanio(); i++) {
+        SaldoPorMoneda actual = resultado.obtener(i);
+        if (actual.getMoneda().equals(moneda)) {
+            actual.sumar(monto);
+            return;
+        }
+    }
+        resultado.agregar(new SaldoPorMoneda(moneda, monto));
+    }
 }

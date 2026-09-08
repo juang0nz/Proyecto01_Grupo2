@@ -1,7 +1,7 @@
 package ucu.edu.aed;
 
 import java.util.Date;
-import ucu.edu.aed.Paquete;
+import ucu.edu.aed.tda.TDALista;
 
 public class Main {
     public static void main(String[] args) {
@@ -195,6 +195,24 @@ public class Main {
     System.out.println("Buscando producto con cuenta 9999 (no existe)...");
     ProductoBancario noExisteProducto = sucursalTest.buscarProductoPorCuenta(9999);
     System.out.println("Encontrado: " + noExisteProducto);
-    }
+    // ==========================
+    // PROBANDO POSICIÓN CONSOLIDADA POR MONEDA
+    // ==========================
+
+    System.out.println("\nPosición consolidada del paquete Oro:");
+    TDALista<SaldoPorMoneda> posicion = paqueteOro.posicionConsolidada();
+    for (int i = 0; i < posicion.tamanio(); i++) {
+        System.out.println(" - " + posicion.obtener(i));
+}    
+
+System.out.println("\nCliente con documento más alto:");
+System.out.println(sucursalTest.clienteConDocumentoMasAlto());
+
+System.out.println("\nClientes sin productos:");
+TDALista<Cliente> sinProductos = sucursalTest.clientesSinProductos();
+for (int i = 0; i < sinProductos.tamanio(); i++) {
+    System.out.println(" - " + sinProductos.obtener(i));
+}
+}
 
 }
