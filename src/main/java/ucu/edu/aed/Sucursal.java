@@ -3,6 +3,7 @@ package ucu.edu.aed;
 import java.util.Date;
 import java.util.NoSuchElementException;
 
+import ucu.edu.aed.implementaciones.AVL;
 import ucu.edu.aed.implementaciones.TDAColaPrioridadEnlazadaImpl;
 import ucu.edu.aed.implementaciones.TDAConjuntoImpl;
 import ucu.edu.aed.implementaciones.TDAListaEnlazadaImpl;
@@ -19,6 +20,7 @@ public class Sucursal {
     private final TDAConjunto<Cliente> clientes = new TDAConjuntoImpl<>();
     private final TDAConjunto<Empleado> empleados = new TDAConjuntoImpl<>();
     private final TDAConjunto<Sector> sectores = new TDAConjuntoImpl<>();
+    private final AVL<Cliente> clientesPorDocumento = new AVL<>();
 
     // mostrador de atención: cola con prioridad (PRIORITARIA antes que NORMAL)
     // la prioridad se define en el enum Prioridad, y se compara con un comparador
@@ -50,8 +52,9 @@ public class Sucursal {
             return false;
         }
         clientes.agregar(cliente);
+        clientesPorDocumento.insertar(cliente);
         return true;
-    }
+}
 //registrar un empleado y agregarlo a la lista de empleados y al conjunto de sectores
     public boolean registrarEmpleado(Empleado empleado) {
         if (empleados.contiene(empleado)) {
@@ -60,6 +63,10 @@ public class Sucursal {
         empleados.agregar(empleado);
         sectores.agregar(empleado.getSector());
         return true;
+    }
+    public Cliente buscarClientePorDocumento(int documento) {
+        Comparable<Cliente> criterio = c -> Integer.compare(documento, c.getId());
+        return clientesPorDocumento.buscar(criterio);
     }
 
     

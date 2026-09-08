@@ -5,6 +5,7 @@ import ucu.edu.aed.Paquete;
 
 public class Main {
     public static void main(String[] args) {
+        
        /*  Sucursal suc = new Sucursal("Sucursal Central");
 
         // Registrar clientes
@@ -165,6 +166,20 @@ public class Main {
     System.out.println("\nEstructura después de la baja:");
 
     paqueteOro.getComponentes().mostrarEstructura();
+     // ==========================
+// PROBANDO BÚSQUEDA POR AVL
+// ==========================
+
+Sucursal sucursalTest = new Sucursal("Sucursal Test");
+sucursalTest.registrarCliente(cliente);
+
+System.out.println("\nBuscando cliente con documento 1...");
+Cliente encontrado = sucursalTest.buscarClientePorDocumento(1);
+System.out.println("Encontrado: " + encontrado);
+
+System.out.println("Buscando cliente con documento 999 (no existe)...");
+Cliente noExiste = sucursalTest.buscarClientePorDocumento(999);
+System.out.println("Encontrado: " + noExiste);
 
     }
 

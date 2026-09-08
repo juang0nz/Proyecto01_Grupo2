@@ -4,8 +4,7 @@ import ucu.edu.aed.implementaciones.TDAConjuntoImpl;
 import ucu.edu.aed.implementaciones.TDAListaEnlazadaImpl;
 import ucu.edu.aed.tda.TDAConjunto;
 import ucu.edu.aed.tda.TDALista;
-
-public class Cliente {
+public class Cliente implements Comparable<Cliente> {
 
     private String nombre;
     public int id;
@@ -66,6 +65,11 @@ public class Cliente {
     // registra una interaccion en el historial del cliente (se agrega al final, cronológico)
     public void registrarInteraccion(Interaccion interaccion) {
         historial.agregar(interaccion);
+    }
+
+        @Override
+    public int compareTo(Cliente otro) {
+        return Integer.compare(this.id, otro.id);
     }
 
     //Uso equals() para determinar si dos clientes son iguales comparando sus IDs.
