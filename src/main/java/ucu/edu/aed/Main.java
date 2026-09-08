@@ -1,7 +1,10 @@
 package ucu.edu.aed;
 
 import java.util.Date;
+
+import ucu.edu.aed.implementaciones.ArbolBinario;
 import ucu.edu.aed.tda.TDALista;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -213,6 +216,27 @@ TDALista<Cliente> sinProductos = sucursalTest.clientesSinProductos();
 for (int i = 0; i < sinProductos.tamanio(); i++) {
     System.out.println(" - " + sinProductos.obtener(i));
 }
+/*estoy probando el parser de fórmulas */
+ParserFormula parser = new ParserFormula();
+
+TDALista<String> tokens =
+        parser.tokenizar("(saldo+movimientos)*2");
+
+TDALista<String> postfija =
+        parser.convertirAPostfija(tokens);
+
+ArbolBinario<ElementoFormula> arbol =
+        parser.construirArbol(postfija);
+
+FormulaComision formula =
+        new FormulaComision("(saldo+movimientos)*2");
+
+formula.setArbol(arbol);
+
+System.out.println(
+        "Formula mostrada: " + formula.mostrarFormula()
+);
+    
 }
 
 }
