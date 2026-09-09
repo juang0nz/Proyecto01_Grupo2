@@ -9,11 +9,13 @@ public class ElementoABB<T> implements TDAElemento<T> {
     protected T dato;
     protected TDAElemento<T> hijoIzquierdo;
     protected TDAElemento<T> hijoDerecho;
+    protected int altura;
 
     public ElementoABB(T dato) {
         this.dato = dato;
         this.hijoIzquierdo = null;
         this.hijoDerecho = null;
+        this.altura = 1;
     }
     
     @Override
@@ -166,6 +168,8 @@ public class ElementoABB<T> implements TDAElemento<T> {
         }
     }
 
+
+
     // recorrido in-order del árbol
     @Override
     public void inOrder(Consumer<TDAElemento<T>> consumidor) {
@@ -265,14 +269,9 @@ public class ElementoABB<T> implements TDAElemento<T> {
     }
 
     @Override
-    /**
-     * retorna la altura de este nodo
-     */
     public int altura() {
-        // Calcular la altura de los subárboles izquierdo y derecho
-        int alturaIzquierda = (hijoIzquierdo != null) ? hijoIzquierdo.altura() : 0;
-        int alturaDerecha = (hijoDerecho != null) ? hijoDerecho.altura() : 0;
-        return 1 + Math.max(alturaIzquierda, alturaDerecha); // este es el que suma la vuelta las dos alturas.
+        // Retornar la altura almacenada (actualizada por actualizarAltura)
+        return this.altura;
     }
 
     @Override
@@ -389,11 +388,19 @@ public class ElementoABB<T> implements TDAElemento<T> {
         }
     }
 
+    public void actualizarAltura() {
+    int alturaIzquierda = (hijoIzquierdo != null) ? hijoIzquierdo.altura() : 0;
+    int alturaDerecha = (hijoDerecho != null) ? hijoDerecho.altura() : 0;
+
+    this.altura = 1 + Math.max(alturaIzquierda, alturaDerecha);
+    }
+
     @Override
     public boolean esArbolDeBusqueda(T minimo, T maximo) {
         if (dato == null) {
             return true;
         }
+        
 
         Comparable<T> comparable = (Comparable<T>) dato;
 
