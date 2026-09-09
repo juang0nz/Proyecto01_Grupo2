@@ -126,4 +126,14 @@ private void acumular(TDALista<SaldoPorMoneda> resultado, String moneda, double 
     }
         resultado.agregar(new SaldoPorMoneda(moneda, monto));
     }
+    public TDALista<ProductoBancario> obtenerSubarbol(int idProducto) {
+    Comparable<ProductoBancario> criterio =
+        producto -> Integer.compare(idProducto, producto.getId());
+    TDAElementoNario<ProductoBancario> nodo = componentes.obtenerRaiz().buscar(criterio);
+    TDALista<ProductoBancario> productosABorrar = new ucu.edu.aed.implementaciones.TDAListaEnlazadaImpl<>();
+    if (nodo != null) {
+        nodo.preOrden(productosABorrar::agregar);
+    }
+        return productosABorrar;
+    }
 }

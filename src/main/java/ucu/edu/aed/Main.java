@@ -325,6 +325,36 @@ public class Main {
         System.out.println(
                 "Fórmula nueva: "
                         + formulaNueva.mostrarFormula());
+                        // ==========================
+// PROBANDO AUDITORÍA DE PAQUETES
+// ==========================
+
+Sucursal sucursalAuditoria = new Sucursal("Sucursal Auditoria");
+Cliente clienteAuditoria = new Cliente("Maria", 10, Prioridad.NORMAL);
+sucursalAuditoria.registrarCliente(clienteAuditoria);
+
+Paquete paqueteParaAuditar = fabrica.crearPaqueteOro();
+sucursalAuditoria.contratarPaquete(clienteAuditoria, paqueteParaAuditar);
+
+System.out.println("\nAltas de producto auditadas: " + sucursalAuditoria.cantidadInteraccionesPorTipo(TipoInteraccion.ALTA_PRODUCTO));
+
+sucursalAuditoria.darBajaComponentePaquete(clienteAuditoria, paqueteParaAuditar, 3);
+System.out.println("Bajas de producto auditadas: " + sucursalAuditoria.cantidadInteraccionesPorTipo(TipoInteraccion.BAJA_PRODUCTO));
+// ==========================
+// PROBANDO AUDITORÍA DE CAMBIO DE FÓRMULA
+// ==========================
+
+    Sucursal sucursalFormula = new Sucursal("Sucursal Formula");
+    System.out.println("\nInteracciones de MODIFICACION_PRODUCTO antes del cambio: "
+            + sucursalFormula.cantidadInteraccionesPorTipo(TipoInteraccion.MODIFICACION_PRODUCTO));
+
+    sucursalFormula.registrarCambioFormula("Cambio de fórmula de comisión a: " + formulaNueva.mostrarFormula());
+    servicio.setFormulaVigente(formulaNueva);
+
+    System.out.println("Interacciones de MODIFICACION_PRODUCTO después del cambio: "
+            + sucursalFormula.cantidadInteraccionesPorTipo(TipoInteraccion.MODIFICACION_PRODUCTO));
+
+    System.out.println("Fórmula vigente ahora: " + servicio.getFormulaVigente().mostrarFormula());
     }
 
 }

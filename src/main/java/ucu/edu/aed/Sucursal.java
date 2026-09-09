@@ -10,6 +10,7 @@ import ucu.edu.aed.implementaciones.TDAListaEnlazadaImpl;
 import ucu.edu.aed.tda.TDACola;
 import ucu.edu.aed.tda.TDAConjunto;
 import ucu.edu.aed.tda.TDALista;
+import ucu.edu.aed.tda.TDAElementoNario;
 
 
 public class Sucursal {
@@ -57,6 +58,10 @@ public class Sucursal {
         clientesPorDocumento.insertar(cliente);
         return true;
 }
+    public void registrarCambioFormula(String detalle) {
+        Interaccion interaccion = new Interaccion(new Date(), TipoInteraccion.MODIFICACION_PRODUCTO, detalle);
+        auditoria.agregar(interaccion);
+    }
 //registrar un empleado y agregarlo a la lista de empleados y al conjunto de sectores
     public boolean registrarEmpleado(Empleado empleado) {
         if (empleados.contiene(empleado)) {
@@ -95,7 +100,28 @@ public class Sucursal {
         }
         return removido;
     }
+        public boolean darBajaComponentePaquete(Cliente cliente, Paquete paquete, int idProducto) {
+        TDALista<ProductoBancario> aEliminar = paquete.obtenerSubarbol(idProducto);
+        if (aEliminar.tamanio() == 0) {
+            return false;
+        }
+        for (int i = 0; i < aEliminar.tamanio(); i++) {
+            darBajaProducto(cliente, aEliminar.obtener(i));
+        }
+        paquete.darBajaProducto(idProducto);
+        return true;
+    }
 
+    public void contratarPaquete(Cliente cliente, Paquete paquete) {
+        TDAElementoNario<ProductoBancario> raiz = paquete.getComponentes().obtenerRaiz();
+        if (raiz == null) {
+            return;
+        }
+        TDALista<TDAElementoNario<ProductoBancario>> hijos = raiz.getHijos();
+        for (int i = 0; i < hijos.tamanio(); i++) {
+            hijos.obtener(i).preOrden(producto -> darAltaProducto(cliente, producto));
+        }
+    }
     
     // Documentación
     
