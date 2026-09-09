@@ -3,6 +3,14 @@ package ucu.edu.aed;
 import junit.framework.TestCase;
 import java.util.Date;
 import ucu.edu.aed.tda.TDALista;
+import ucu.edu.aed.sucursal.Sucursal;
+import ucu.edu.aed.modelo.Sector;
+import ucu.edu.aed.modelo.Cliente;
+import ucu.edu.aed.modelo.Prioridad;
+import ucu.edu.aed.modelo.Documento;
+import ucu.edu.aed.modelo.ProductoBancario;
+import ucu.edu.aed.modelo.Empleado;
+import ucu.edu.aed.modelo.TipoInteraccion;
 import ucu.edu.aed.tda.TDAConjunto;
 
 public class OperacionesRelevantesTest extends TestCase {

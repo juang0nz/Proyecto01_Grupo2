@@ -1,10 +1,14 @@
-package ucu.edu.aed;
+package ucu.edu.aed.productos;
 
 import java.util.Date;
 
+import ucu.edu.aed.comisiones.SaldoPorMoneda;
 import ucu.edu.aed.implementaciones.ArbolNario;
+import ucu.edu.aed.modelo.Cliente;
+import ucu.edu.aed.modelo.ProductoBancario;
 import ucu.edu.aed.tda.TDAElementoNario;
 import ucu.edu.aed.tda.TDALista;
+
 
 public class Paquete extends ProductoBancario {
     // árbol n-ario que contiene los componentes del paquete

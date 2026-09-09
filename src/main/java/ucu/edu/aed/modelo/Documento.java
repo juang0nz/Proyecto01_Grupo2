@@ -1,4 +1,4 @@
-package ucu.edu.aed;
+package ucu.edu.aed.modelo;
 import java.util.Date;
 
 public class Documento {

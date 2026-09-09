@@ -1,6 +1,9 @@
 package ucu.edu.aed;
 
 import junit.framework.TestCase;
+import ucu.edu.aed.modelo.Cliente;
+import ucu.edu.aed.modelo.Prioridad;
+import ucu.edu.aed.sucursal.Sucursal;
 
 public class AtencionMostradorTest extends TestCase {
 

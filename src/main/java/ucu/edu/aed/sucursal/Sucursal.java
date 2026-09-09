@@ -1,16 +1,26 @@
-package ucu.edu.aed;
+package ucu.edu.aed.sucursal;
 
 import java.util.Date;
 import java.util.NoSuchElementException;
-import ucu.edu.aed.tda.TDAElemento;
+
+import ucu.edu.aed.auditoria.Interaccion;
 import ucu.edu.aed.implementaciones.AVL;
 import ucu.edu.aed.implementaciones.TDAColaPrioridadEnlazadaImpl;
 import ucu.edu.aed.implementaciones.TDAConjuntoImpl;
 import ucu.edu.aed.implementaciones.TDAListaEnlazadaImpl;
+import ucu.edu.aed.modelo.Cliente;
+import ucu.edu.aed.modelo.Documento;
+import ucu.edu.aed.modelo.Empleado;
+import ucu.edu.aed.modelo.Prioridad;
+import ucu.edu.aed.modelo.ProductoBancario;
+import ucu.edu.aed.modelo.Sector;
+import ucu.edu.aed.modelo.TipoInteraccion;
+import ucu.edu.aed.productos.Paquete;
 import ucu.edu.aed.tda.TDACola;
 import ucu.edu.aed.tda.TDAConjunto;
-import ucu.edu.aed.tda.TDALista;
+import ucu.edu.aed.tda.TDAElemento;
 import ucu.edu.aed.tda.TDAElementoNario;
+import ucu.edu.aed.tda.TDALista;
 
 
 public class Sucursal {

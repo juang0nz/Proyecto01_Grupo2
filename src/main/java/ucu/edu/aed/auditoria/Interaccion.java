@@ -1,5 +1,8 @@
-package ucu.edu.aed;
+package ucu.edu.aed.auditoria;
+
 import java.util.Date;
+
+import ucu.edu.aed.modelo.TipoInteraccion;
 
 public class Interaccion {
 Date fecha;

@@ -1,5 +1,7 @@
-package ucu.edu.aed;
+package ucu.edu.aed.comisiones;
 
+import ucu.edu.aed.modelo.Cliente;
+import ucu.edu.aed.modelo.ProductoBancario;
 import ucu.edu.aed.tda.TDAConjunto;
 
 public class ServicioComisiones {

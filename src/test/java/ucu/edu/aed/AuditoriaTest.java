@@ -1,7 +1,15 @@
 package ucu.edu.aed;
 
-import junit.framework.TestCase;
 import java.util.Date;
+
+import junit.framework.TestCase;
+import ucu.edu.aed.auditoria.Interaccion;
+import ucu.edu.aed.modelo.Cliente;
+import ucu.edu.aed.modelo.Documento;
+import ucu.edu.aed.modelo.Prioridad;
+import ucu.edu.aed.modelo.ProductoBancario;
+import ucu.edu.aed.modelo.TipoInteraccion;
+import ucu.edu.aed.sucursal.Sucursal;
 
 public class AuditoriaTest extends TestCase {
 

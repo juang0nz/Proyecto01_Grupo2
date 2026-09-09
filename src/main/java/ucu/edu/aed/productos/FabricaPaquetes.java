@@ -1,6 +1,11 @@
-package ucu.edu.aed;
+package ucu.edu.aed.productos;
 
 import java.util.Date;
+
+import ucu.edu.aed.modelo.ProductoBancario;
+
+
+
 
 public class FabricaPaquetes {
 

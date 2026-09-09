@@ -1,4 +1,4 @@
-package ucu.edu.aed;
+package ucu.edu.aed.comisiones;
 
 import ucu.edu.aed.implementaciones.ArbolBinario;
 import ucu.edu.aed.implementaciones.ElementoAB;
@@ -6,7 +6,7 @@ import ucu.edu.aed.implementaciones.TDAListaConArregloImpl;
 import ucu.edu.aed.implementaciones.TDAPilaImpl;
 import ucu.edu.aed.tda.TDAElemento;
 import ucu.edu.aed.tda.TDALista;
-import ucu.edu.aed.tda.TDAPila;  
+import ucu.edu.aed.tda.TDAPila;
 
 
 

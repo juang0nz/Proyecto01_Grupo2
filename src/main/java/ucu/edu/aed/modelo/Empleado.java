@@ -1,4 +1,4 @@
-package ucu.edu.aed;
+package ucu.edu.aed.modelo;
 
 public class Empleado {
     private String nombre;

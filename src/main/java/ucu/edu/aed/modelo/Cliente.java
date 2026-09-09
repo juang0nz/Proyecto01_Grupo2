@@ -1,5 +1,6 @@
-package ucu.edu.aed;
+package ucu.edu.aed.modelo;
 
+import ucu.edu.aed.auditoria.Interaccion;
 import ucu.edu.aed.implementaciones.TDAConjuntoImpl;
 import ucu.edu.aed.implementaciones.TDAListaEnlazadaImpl;
 import ucu.edu.aed.tda.TDAConjunto;
